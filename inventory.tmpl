@@ -1,0 +1,10 @@
+[db]
+${db-dns} ansible_host=${db-ip} # ${db-id}
+
+[manager]
+${manager-dns} ansible_host=${manager-ip} # ${manager-id}
+
+[data]
+%{ for index, dns in data-dns ~}
+${dns} ansible_host=${data-ip[index]} # ${data-id[index]}
+%{ endfor ~}

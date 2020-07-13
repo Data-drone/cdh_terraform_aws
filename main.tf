@@ -8,11 +8,12 @@ resource "aws_instance" "db" {
     tags = {
         Name = "database"
         owner = var.owner
+        enddate = var.enddate
     }
 
     subnet_id = var.subnet_id
 
-    security_groups = var.security_groups
+    security_groups = [var.security_group]
 }
 
 resource "aws_instance"  "manager"  {
@@ -21,11 +22,28 @@ resource "aws_instance"  "manager"  {
 
     count = 1
     tags = {
-        Name = "database"
+        Name = "manager"
         owner = var.owner
+        enddate = var.enddate
     }
 
     subnet_id = var.subnet_id
 
-    security_groups = var.security_groups
+    security_groups = [var.security_group]
+}
+
+resource "aws_instance"  "data"  {
+    ami = "ami-0b2045146eb00b617"
+    instance_type = "m5a.xlarge"
+
+    count = var.node_count
+    tags = {
+        Name = "data"
+        owner = var.owner
+        enddate = var.enddate
+    }
+
+    subnet_id = var.subnet_id
+
+    security_groups = [var.security_group]
 }

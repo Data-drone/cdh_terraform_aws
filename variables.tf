@@ -17,3 +17,8 @@ variable "subnet_id"  {
     type = string
     default = "sb-000000"
 }
+
+variable "node_count" {
+    type=number
+    default=3
+}
