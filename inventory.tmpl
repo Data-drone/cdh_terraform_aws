@@ -1,10 +1,29 @@
-[db]
+[db_server]
 ${db-dns} ansible_host=${db-ip} # ${db-id}
 
-[manager]
+[scm_server]
 ${manager-dns} ansible_host=${manager-ip} # ${manager-id}
 
-[data]
+[utility_servers:children]
+db_server
+scm_server
+
+[master_servers]
+${master-dns} ansible_host=${master-ip} # ${master-id}
+
+[edge_servers]
+${edge-dns} ansible_host=${edge-ip} # ${edge-id}
+
+[worker_servers]
 %{ for index, dns in data-dns ~}
 ${dns} ansible_host=${data-ip[index]} # ${data-id[index]}
 %{ endfor ~}
+
+[cdh_servers:children]
+utility_servers
+edge_servers
+master_servers
+worker_servers
+
+[all:vars]
+ansible_user=centos
