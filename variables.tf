@@ -18,6 +18,10 @@ variable "subnet_id"  {
     default = "sb-000000"
 }
 
+variable "ssh-key" {
+    type=string
+}
+
 variable "node_count" {
     type=number
     default=3

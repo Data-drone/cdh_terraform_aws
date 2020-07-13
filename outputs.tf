@@ -7,9 +7,15 @@ resource "local_file" "AnsibleInventory" {
   manager-id = aws_instance.manager.id,
   manager-ip = aws_instance.manager.public_ip,
   manager-dns = aws_instance.manager.private_dns,
+  master-id = aws_instance.master.id,
+  master-ip = aws_instance.master.public_ip,
+  master-dns = aws_instance.master.private_dns,
   data-id = aws_instance.data.*.id,
   data-ip = aws_instance.data.*.public_ip,
-  data-dns = aws_instance.data.*.private_dns
+  data-dns = aws_instance.data.*.private_dns,
+  edge-id = aws_instance.edge.id,
+  edge-ip = aws_instance.edge.public_ip,
+  edge-dns = aws_instance.edge.private_dns
  }
  )
  filename = "inventory"
