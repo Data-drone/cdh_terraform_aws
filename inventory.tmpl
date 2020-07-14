@@ -4,20 +4,29 @@ ${db-dns} ansible_host=${db-ip} # ${db-id}
 [scm_server]
 ${manager-dns} ansible_host=${manager-ip} # ${manager-id}
 
+[krb5_server]
+${krb5-dns} ansible_host=${krb5-ip} # ${krb5-id}
+
 [utility_servers:children]
 db_server
 scm_server
+krb5_server
 
 [master_servers]
-${master-dns} ansible_host=${master-ip} # ${master-id}
+%{ for index, dns in master-dns ~}
+${dns} ansible_host=${master-ip[index]} # ${master-id[index]} host_template=HostTemplate-Master${index}
+%{ endfor ~}
 
 [edge_servers]
-${edge-dns} ansible_host=${edge-ip} # ${edge-id}
+${edge-dns} ansible_host=${edge-ip} # ${edge-id} host_template=HostTemplate-Edge
 
 [worker_servers]
 %{ for index, dns in data-dns ~}
 ${dns} ansible_host=${data-ip[index]} # ${data-id[index]}
 %{ endfor ~}
+
+[worker_servers:vars]
+host_template=HostTemplate-Workers
 
 [cdh_servers:children]
 utility_servers

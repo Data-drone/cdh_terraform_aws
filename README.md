@@ -14,6 +14,17 @@ to the folder.
 
 edit `cloudera-playbook/group_vars/all` as needed
 
+### Extra Tips
+- Currently the script breaks if there isn't a krb5 server (none flag doesn't seem to work)
+- The hosts files are geared for 3 masters will need to alter a fair bit to change
+- need this commit: https://github.com/cloudera/cloudera-playbook/pull/69/commits/426020e8afcde87127642790207b3800eb2f11d1
+- need to edit /roles/cdh/templates/host.j2 as needed
+  - by default assumes 3 master setup
+- HTTPFS is hard to deploy right and to remove that need to go through
+  - hue.j2
+  - hdfs.j2
+  - host.j2 
+
 ```{bash}
 export ANSIBLE_HOST_KEY_CHECKING=False
 export AWS_ACCESS_KEY_ID=blah

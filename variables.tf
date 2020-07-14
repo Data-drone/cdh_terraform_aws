@@ -19,10 +19,26 @@ variable "subnet_id"  {
 }
 
 variable "ssh-key" {
-    type=string
+    type = string
 }
 
 variable "node_count" {
-    type=number
-    default=3
+    type = number
+    default = 3
 }
+
+variable "volume_type" {
+    type = string
+    default = "io1"
+}
+
+variable "volume_size" {
+    type = number
+    default = 50
+}
+
+variable "iops" {
+    type = number
+    default = 1000
+}
+
