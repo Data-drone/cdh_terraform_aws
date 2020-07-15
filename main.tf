@@ -12,15 +12,16 @@ resource "aws_instance" "db" {
     }
 
     root_block_device {
-        volume_type           = "${var.volume_type}"
-        volume_size           = "${var.volume_size}"
-        iops                  = "${var.iops}"
+        volume_type           = var.volume_type
+        volume_size           = var.volume_size
+        iops                  = var.iops
         delete_on_termination = true
     }
 
     subnet_id = var.subnet_id
 
     security_groups = [var.security_group]
+
 }
 
 resource "aws_instance"  "manager"  {
@@ -35,15 +36,16 @@ resource "aws_instance"  "manager"  {
     }
 
     root_block_device {
-        volume_type           = "${var.volume_type}"
-        volume_size           = "${var.volume_size}"
-        iops                  = "${var.iops}"
+        volume_type           = var.volume_type
+        volume_size           = var.volume_size
+        iops                  = var.iops
         delete_on_termination = true
     }
 
     subnet_id = var.subnet_id
 
     security_groups = [var.security_group]
+
 }
 
 resource "aws_instance"  "krb5"  {
@@ -60,6 +62,7 @@ resource "aws_instance"  "krb5"  {
     subnet_id = var.subnet_id
 
     security_groups = [var.security_group]
+
 }
 
 resource "aws_instance"  "master"  {
@@ -70,9 +73,9 @@ resource "aws_instance"  "master"  {
     count = 3
 
     root_block_device {
-        volume_type           = "${var.volume_type}"
-        volume_size           = "${var.volume_size}"
-        iops                  = "${var.iops}"
+        volume_type           = var.volume_type
+        volume_size           = var.volume_size
+        iops                  = var.iops
         delete_on_termination = true
     }
 
@@ -85,6 +88,7 @@ resource "aws_instance"  "master"  {
     subnet_id = var.subnet_id
 
     security_groups = [var.security_group]
+
 }
 
 resource "aws_instance"  "edge"  {
@@ -99,15 +103,16 @@ resource "aws_instance"  "edge"  {
     }
 
     root_block_device {
-        volume_type           = "${var.volume_type}"
-        volume_size           = "${var.volume_size}"
-        iops                  = "${var.iops}"
+        volume_type           = var.volume_type
+        volume_size           = var.volume_size
+        iops                  = var.iops
         delete_on_termination = true
     }
 
     subnet_id = var.subnet_id
 
     security_groups = [var.security_group]
+
 }
 
 resource "aws_instance"  "data"  {
@@ -118,9 +123,9 @@ resource "aws_instance"  "data"  {
     count = var.node_count
 
     root_block_device {
-        volume_type           = "${var.volume_type}"
-        volume_size           = "${var.volume_size}"
-        iops                  = "${var.iops}"
+        volume_type           = var.volume_type
+        volume_size           = var.volume_size
+        iops                  = var.iops
         delete_on_termination = true
     }
 
@@ -133,4 +138,5 @@ resource "aws_instance"  "data"  {
     subnet_id = var.subnet_id
 
     security_groups = [var.security_group]
+
 }

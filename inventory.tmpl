@@ -14,11 +14,11 @@ krb5_server
 
 [master_servers]
 %{ for index, dns in master-dns ~}
-${dns} ansible_host=${master-ip[index]} # ${master-id[index]} host_template=HostTemplate-Master${index}
+${dns} ansible_host=${master-ip[index]} host_template=HostTemplate-Master${index+1} # ${master-id[index]} 
 %{ endfor ~}
 
 [edge_servers]
-${edge-dns} ansible_host=${edge-ip} # ${edge-id} host_template=HostTemplate-Edge
+${edge-dns} ansible_host=${edge-ip} host_template=HostTemplate-Edge # ${edge-id} 
 
 [worker_servers]
 %{ for index, dns in data-dns ~}
