@@ -18,7 +18,7 @@ ${dns} ansible_host=${master-ip[index]} host_template=HostTemplate-Master${index
 %{ endfor ~}
 
 [edge_servers]
-${edge-dns} ansible_host=${edge-ip} host_template=HostTemplate-Edge # ${edge-id} 
+${edge-dns} ansible_host=${edge-ip} host_template=HostTemplate-Edge role_ref_names=HDFS-HTTPFS-1 # ${edge-id} 
 
 [worker_servers]
 %{ for index, dns in data-dns ~}
