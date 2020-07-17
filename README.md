@@ -35,5 +35,8 @@ terraform apply --var-file="myfile.tfvars"
 
 # wait a while
 
+ansible-playbook -i inventory ansible-prework/main.yml --private-key /path/to/my_aws_key.pem
+
 ansible-playbook -i inventory cloudera-playbook/site.yml --private-key /path/to/my_aws_key.pem
+
 ```
