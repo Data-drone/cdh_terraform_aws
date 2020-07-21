@@ -23,3 +23,13 @@
 
 ## To Do - Setup sentry roles so that we can do things...
 
+  - Create Hue users
+  - Create Sentry grants on db
+
+## To Add - Kudu Configs
+  - Add service
+  - Add service users
+  - Add kerb?
+  
+
+## CDF Configs
