@@ -1,0 +1,6 @@
+---
+user: cloudera-scm
+
+- name: Create the HDFS Superuser
+  command: kadmin add_principal /usr/sbin/kadmin.local -q "addprinc -pw hdfs1234 hdfs"
+

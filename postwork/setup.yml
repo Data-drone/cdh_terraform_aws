@@ -1,0 +1,6 @@
+---
+
+- name: Configure kb5
+  hosts: krb5_server
+  roles:
+    - krb5
