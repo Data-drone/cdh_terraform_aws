@@ -4,3 +4,5 @@
   hosts: krb5_server
   roles:
     - krb5
+  tags: 
+    - kerberos

@@ -1,0 +1,10 @@
+---
+
+- name: Create HDFS Superuser
+  command: /usr/sbin/kadmin.local -q "addprinc -pw hdfs1234 hdfs"
+  become: yes
+  become_user: cloudera-scm
+
+- name: Generate Keytabs
+  command: /usr/sbin/kutil -password -p hive@CLOUDERA.COM -k 1 -e aes256`
+

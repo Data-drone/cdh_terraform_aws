@@ -40,3 +40,14 @@ ansible-playbook -i inventory ansible-prework/main.yml --private-key /path/to/my
 ansible-playbook -i inventory cloudera-playbook/site.yml --private-key /path/to/my_aws_key.pem
 
 ```
+
+# Testing postwork
+
+```{bash}
+
+ansible-playbook -i inventory cloudera-playbook/testing_site.yml --private-key /path/to/my_aws_key.pem
+
+ansible-playbook -i inventory postwork/setup.yml --private-key /path/to/my_aws_key.pem
+
+
+```
