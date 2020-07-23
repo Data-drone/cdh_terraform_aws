@@ -33,3 +33,9 @@
   
 
 ## CDF Configs
+  - NiFi
+    - parcel loading
+    - Configs for Manager
+  - Kafka
+  - SMM and friends too
+  - Flink
