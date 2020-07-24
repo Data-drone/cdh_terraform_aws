@@ -20,19 +20,46 @@
   become: true
   tags: pip
 
+- name: Create keytabs folder
+  file:
+    path: /opt/keytabs
+    state: directory
+    owner: centos
+    mode: '0755'
+  become: true
+  tags:
+    - superuser
+
 - name: Create HDFS Superuser
   shell: sudo -u cloudera-scm kadmin -w {{ krb5_kdc_admin_passwd }} -q "addprinc -pw {{ krb5_hdfs_master_passwd }} hdfs"
   tags:
     - superuser
 
-- name: Generate Keytabs - works
+- name: Generate Keytabs
   expect:
     command: ktutil 
     responses:
       ktutil: 
         - "add_entry -password -p hive@CLOUDERA.COM -k 1 -e aes256-cts"
-        - "wkt /home/centos/hive.keytab"
+        - "wkt /opt/keytabs/hive.keytab"
         - "quit"
       Password: '{{ krb5_hdfs_master_passwd }}'
   tags:
     - superuser
+
+- name: Create admin user since Hue uses that
+  shell: sudo -u cloudera-scm kadmin -w {{ krb5_kdc_admin_passwd }} -q "addprinc -pw {{ krb5_admin_user_passwd }} admin"
+  tags:
+    - adminuser
+
+- name: Generate Keytabs
+  expect:
+    command: ktutil 
+    responses:
+      ktutil: 
+        - "add_entry -password -p admin@CLOUDERA.COM -k 1 -e aes256-cts"
+        - "wkt /opt/keytabs/admin.keytab"
+        - "quit"
+      Password: '{{ krb5_admin_user_passwd }}'
+  tags:
+    - adminuser
