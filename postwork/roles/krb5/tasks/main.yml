@@ -1,22 +1,29 @@
 ---
 
-- name: get pip - NEED REDO
-  shell: curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
-  tags: done
+- name: add yum epel
+  yum:
+    name: epel-release
+    state: present
+  become: true
+  tags: pip
 
-- name: install pip - NEED REDO
-  shell: python get-pip.py
-  tags: done
+- name: install pip 
+  yum:
+    name: python-pip
+    state: present
+  become: true
+  tags: pip
 
-- name: install python lib - NEED REDO
+- name: install python lib
   pip:
     name: pexpect
-  tags: done
+  become: true
+  tags: pip
 
-- name: Create HDFS Superuser - works
-  shell: sudo -u cloudera-scm kadmin -w adminword1 -q "addprinc -pw hdfs1234 hdfs"
+- name: Create HDFS Superuser
+  shell: sudo -u cloudera-scm kadmin -w {{ krb5_kdc_admin_passwd }} -q "addprinc -pw {{ k5b5_hdfs_master_passwd }} hdfs"
   tags:
-    - done
+    - not_done
 
 - name: Generate Keytabs - works
   expect:
