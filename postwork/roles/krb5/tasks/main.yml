@@ -21,9 +21,9 @@
   tags: pip
 
 - name: Create HDFS Superuser
-  shell: sudo -u cloudera-scm kadmin -w {{ krb5_kdc_admin_passwd }} -q "addprinc -pw {{ k5b5_hdfs_master_passwd }} hdfs"
+  shell: sudo -u cloudera-scm kadmin -w {{ krb5_kdc_admin_passwd }} -q "addprinc -pw {{ krb5_hdfs_master_passwd }} hdfs"
   tags:
-    - not_done
+    - superuser
 
 - name: Generate Keytabs - works
   expect:
@@ -33,6 +33,6 @@
         - "add_entry -password -p hive@CLOUDERA.COM -k 1 -e aes256-cts"
         - "wkt /home/centos/hive.keytab"
         - "quit"
-      Password: "hive1234"
+      Password: '{{ krb5_hdfs_master_passwd }}'
   tags:
-    - not_done
+    - superuser
