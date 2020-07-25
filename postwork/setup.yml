@@ -6,3 +6,10 @@
     - krb5
   tags: 
     - kerberos
+    
+- name: Configure Gateway and users
+  hosts: edge_servers
+  roles:
+    - edge
+  tags:
+    - edge

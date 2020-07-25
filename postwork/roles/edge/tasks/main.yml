@@ -1,0 +1,11 @@
+---
+
+- name: send keytabs to gateway
+  copy:
+    src: tmp/keytabs/
+    dest: /opt/keytabs
+    owner: centos
+    mode: '0644'
+  become: true
+  tags:
+    - upload_keytabs

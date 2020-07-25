@@ -40,8 +40,8 @@
     command: ktutil 
     responses:
       ktutil: 
-        - "add_entry -password -p hive@CLOUDERA.COM -k 1 -e aes256-cts"
-        - "wkt /opt/keytabs/hive.keytab"
+        - "add_entry -password -p hdfs@CLOUDERA.COM -k 1 -e aes256-cts"
+        - "wkt /opt/keytabs/hdfs.keytab"
         - "quit"
       Password: '{{ krb5_hdfs_master_passwd }}'
   tags:
@@ -63,3 +63,17 @@
       Password: '{{ krb5_admin_user_passwd }}'
   tags:
     - adminuser
+
+- name: copy superuser keytab
+  fetch:
+    src: /opt/keytabs/hdfs.keytab
+    dest: tmp/keytabs/hdfs.keytab
+  tags:
+    - copy_keytabs
+  
+- name: copy admin user keytab
+  fetch:
+    src: /opt/keytabs/admin.keytab
+    dest: tmp/keytabs/admin.keytab
+  tags:
+    - copy_keytabs
