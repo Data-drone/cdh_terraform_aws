@@ -1,0 +1,14 @@
+---
+
+- name: create sysadmins group
+  group:
+    name: sysadmins
+    state: present
+  become: true
+
+- name: create superuser
+  user:
+    name: admin
+    groups:
+    - sysadmins
+  become: true

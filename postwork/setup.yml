@@ -1,5 +1,12 @@
 ---
 
+- name: create sysadmin
+  hosts: cdh_servers
+  roles:
+    - common
+  tags:
+    - create_sysadmin
+
 - name: Configure kb5
   hosts: krb5_server
   roles:
