@@ -9,3 +9,18 @@
   become: true
   tags:
     - upload_keytabs
+
+- name: kinit as hdfs user
+  shell: kinit hdfs -kt /opt/keytabs/hdfs.keytab
+  tags:
+    - create_admin
+
+- name: create admin directory
+  shell: hadoop fs -mkdir /user/admin
+  tags:
+    - create_admin
+
+- name: chown admin directory
+  shell: hadoop fs -chown admin /user/admin
+  tags:
+    - create_admin
