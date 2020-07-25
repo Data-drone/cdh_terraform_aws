@@ -35,7 +35,7 @@
   tags:
     - superuser
 
-- name: Generate Keytabs
+- name: Generate HDFS Keytab
   expect:
     command: ktutil 
     responses:
@@ -52,7 +52,25 @@
   tags:
     - adminuser
 
-- name: Generate Keytabs
+- name: Generate Hive Keytab
+  expect:
+    command: ktutil 
+    responses:
+      ktutil: 
+        - "add_entry -password -p admin@CLOUDERA.COM -k 1 -e aes256-cts"
+        - "wkt /opt/keytabs/admin.keytab"
+        - "quit"
+      Password: '{{ krb5_admin_user_passwd }}'
+  tags:
+    - adminuser
+
+
+- name: Create sysadmin user 
+  shell: sudo -u cloudera-scm kadmin -w {{ krb5_kdc_admin_passwd }} -q "addprinc -pw {{ krb5_admin_user_passwd }} admin"
+  tags:
+    - adminuser
+  
+- name: Generate Hive Keytab
   expect:
     command: ktutil 
     responses:

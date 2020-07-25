@@ -24,3 +24,8 @@
   shell: hadoop fs -chown admin /user/admin
   tags:
     - create_admin
+
+- name: fix hive warehouse dir for Sentry
+  shell: hdfs dfs -chmod -R 771 /user/hive/warehouse
+  tags:
+    - Sentry Setup
