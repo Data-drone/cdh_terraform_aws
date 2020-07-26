@@ -18,7 +18,14 @@ resource "local_file" "AnsibleInventory" {
   data-dns = aws_instance.data.*.private_dns,
   edge-id = aws_instance.edge.id,
   edge-ip = aws_instance.edge.public_ip,
-  edge-dns = aws_instance.edge.private_dns
+  edge-dns = aws_instance.edge.private_dns,
+  cdf_admin-id = aws_instance.cdf_admin.id,
+  cdf_admin-ip = aws_instance.cdf_admin.public_ip,
+  cdf_admin-dns = aws_instance.cdf_admin.private_dns,
+  cdf-id = aws_instance.cdf.*.id,
+  cdf-ip = aws_instance.cdf.*.public_ip,
+  cdf-dns = aws_instance.cdf.*.private_dns,
+  
  }
  )
  filename = "inventory"

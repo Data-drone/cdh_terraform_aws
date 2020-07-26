@@ -28,11 +28,24 @@ ${dns} ansible_host=${data-ip[index]} # ${data-id[index]}
 [worker_servers:vars]
 host_template=HostTemplate-Workers
 
+[cdf_servers]
+%{ for index, dns in cdf-dns ~}
+${dns} ansible_host=${cdf-ip[index]} # ${cdf-id[index]}
+%{ endfor ~}
+
+[cdf_servers:vars]
+host_template=HostTemplate-CDF
+
+[cdf_admin]
+${cdf_admin-dns} ansible_host=${cdf_admin-ip} host_template=HostTemplate-CDFAdmin # ${cdf_admin-id}
+
 [cdh_servers:children]
 utility_servers
 edge_servers
 master_servers
 worker_servers
+cdf_servers
+cdf_admin
 
 [all:vars]
 ansible_user=centos

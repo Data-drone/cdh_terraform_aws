@@ -27,6 +27,11 @@ variable "node_count" {
     default = 3
 }
 
+variable "cdf_node_count" {
+    type = number
+    default = 3
+}
+
 variable "volume_type" {
     type = string
     default = "io1"
