@@ -1,0 +1,63 @@
+---
+
+- name: install grpcio==1.12.0
+  pip:
+    name: grpcio==1.12.0
+    executable: pip3
+    state: present
+  become: true
+
+- name: install skein
+  pip:
+    name: skein
+    executable: pip3
+    state: present
+  become: true
+
+- name: install jupyterlab
+  pip:
+    name: jupyterlab
+    executable: pip3
+    state: present
+  become: true 
+
+- name: setup jupyter
+  shell: jupyter notebook --generate-config
+
+- name: copy over config
+  copy:
+    src: jupyter_notebook_config.py
+    dest: /home/centos/.jupyter/jupyter_notebook_config.py
+    owner: centos
+    group: centos
+    mode: '0664'
+  tags:
+    - set_passsword
+
+- name: install pip2
+  yum:
+    name: python-pip
+    state: present
+  become: true
+  tags:
+    - set_password
+
+- name: install pexpect
+  pip:
+    name: pexpect
+    state: present
+  become: true
+  tags:
+    - set_password
+
+- name: run password creation
+  expect:
+    command: jupyter notebook password
+    responses:
+      Enter password:
+        - '{{ jupyter_password }}'
+      Verify password:
+        - '{{ jupyter_password }}'
+  tags:
+    - set_password
+        

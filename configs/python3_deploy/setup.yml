@@ -1,0 +1,15 @@
+---
+
+- name: install python 3
+  hosts: cdh_servers
+  roles:
+    - common
+  tags:
+    - install python 3
+
+- name: edge modules
+  hosts: edge_servers
+  roles:
+    - edge
+  tags:
+    - install edge libs

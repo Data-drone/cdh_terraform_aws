@@ -1,0 +1,35 @@
+---
+
+- name: install epel-release
+  yum:
+    name: epel-release
+    state: present
+  become: true
+
+- name: install python
+  yum:
+    name: python3
+    state: present
+  become: true
+
+- name: install pip
+  yum:
+    name: python3-pip
+    state: present
+  become: true
+
+- name: update pip
+  pip:
+    name: pip
+    executable: pip3
+    extra_args: --upgrade
+  become: true
+
+- name: install ray
+  pip:
+    name: ray[tune]
+    executable: pip3
+    state: present
+  become: true
+
+  

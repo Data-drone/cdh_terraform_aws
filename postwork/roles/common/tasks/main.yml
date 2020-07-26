@@ -12,3 +12,10 @@
     groups:
     - sysadmins
   become: true
+
+- name: create user for cluster utilisation report
+  user:
+    name: cmjobuser
+    groups:
+    - hadoop
+  become: true
