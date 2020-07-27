@@ -1,0 +1,3 @@
+---
+krb5_kdc_admin_passwd: adminword1
+krb5_hdfs_master_passwd: hdfs1234
