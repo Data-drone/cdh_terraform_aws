@@ -6,7 +6,7 @@ resource "aws_instance" "db" {
     key_name = var.ssh-key
 
     tags = {
-        Name = "database"
+        Name = join("-", [var.prefix, "database"])
         owner = var.owner
         enddate = var.enddate
     }
@@ -30,7 +30,7 @@ resource "aws_instance"  "manager"  {
     key_name = var.ssh-key
 
     tags = {
-        Name = "manager"
+        Name = join("-", [var.prefix, "manager"])
         owner = var.owner
         enddate = var.enddate
     }
@@ -54,7 +54,7 @@ resource "aws_instance"  "krb5"  {
     key_name = var.ssh-key
 
     tags = {
-        Name = "krb5"
+        Name = join("-", [var.prefix, "krb5"])
         owner = var.owner
         enddate = var.enddate
     }
@@ -80,7 +80,7 @@ resource "aws_instance"  "master"  {
     }
 
     tags = {
-        Name = "master"
+        Name = join("-", [var.prefix, "master"])
         owner = var.owner
         enddate = var.enddate
     }
@@ -97,7 +97,7 @@ resource "aws_instance"  "edge"  {
     key_name = var.ssh-key
 
     tags = {
-        Name = "edge"
+        Name = join("-", [var.prefix, "edge"])
         owner = var.owner
         enddate = var.enddate
     }
@@ -130,7 +130,7 @@ resource "aws_instance"  "data"  {
     }
 
     tags = {
-        Name = "data"
+        Name = join("-", [var.prefix, "data"])
         owner = var.owner
         enddate = var.enddate
     }
@@ -156,7 +156,7 @@ resource "aws_instance"  "cdf"  {
     }
 
     tags = {
-        Name = "cdf"
+        Name = join("-", [var.prefix, "cdf"])
         owner = var.owner
         enddate = var.enddate
     }
@@ -181,7 +181,7 @@ resource "aws_instance"  "cdf_admin"  {
     }
 
     tags = {
-        Name = "cdf_admin"
+        Name = join("-", [var.prefix, "cdf_admin"])
         owner = var.owner
         enddate = var.enddate
     }

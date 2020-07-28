@@ -3,6 +3,11 @@ variable "owner" {
     default = "test"
 }
 
+variable "prefix" {
+    type = string
+    default = "dev"
+}
+
 variable "enddate" {
     type = string
     default = "07202020"
