@@ -70,7 +70,7 @@
   tags:
     - adminuser
   
-- name: Generate Hive Keytab
+- name: Generate Admin Keytab
   expect:
     command: ktutil 
     responses:
