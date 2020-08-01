@@ -1,0 +1,11 @@
+---
+
+
+- name: Deploy Logstash file
+  copy:
+    src: files/s3_grok_template
+    dest: /var/lib/nifi/s3_grok_template
+    owner: nifi
+    group: nifi
+    mode: '0755'
+  become: true

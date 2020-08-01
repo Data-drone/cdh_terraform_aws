@@ -1,0 +1,32 @@
+{
+    "type": "record",
+    "name": "s3_access_logs",
+    "fields": [
+        { "name": "BucketOwner", "type": "string" },
+        { "name": "Bucket", "type": "string" },
+        { "name": "RequestDateTime", "type": "string" },
+        { "name": "RemoteIP", "type": "string" },
+        { "name": "Requester", "type": "string" },
+        { "name": "RequestID", "type": "string" },
+        { "name": "Operation", "type": "string" },
+        { "name": "Key", "type": "string" },
+        { "name": "RequestURI_operation", "type": "string" },
+        { "name": "RequestURI_key", "type": "string" },
+        { "name": "RequestURI_httpProtoversion", "type": "string" },
+        { "name": "HTTPstatus", "type": "string" },
+        { "name": "ErrorCode", "type": "string" },
+        { "name": "BytesSent", "type": "string" },
+        { "name": "ObjectSize", "type": "string" },
+        { "name": "TotalTime", "type": "string" },
+        { "name": "TurnAroundTime", "type": "string" },
+        { "name": "Referrer", "type": "string" },
+        { "name": "UserAgent", "type": "string" },
+        { "name": "VersionId", "type": "string" },
+        { "name": "HostId", "type": "string" },
+        { "name": "SigV", "type": "string" },
+        { "name": "CipherSuite", "type": "string" },
+        { "name": "AuthType", "type": "string" },
+        { "name": "EndPoint", "type": "string" },
+        { "name": "TLSVersion", "type": "string" }
+  ]
+}
