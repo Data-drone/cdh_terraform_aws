@@ -1,0 +1,8 @@
+---
+
+- name: copy over grok setup
+  hosts: cdf_servers
+  roles:
+  - streaming_node
+  tags:
+  - copy over files
