@@ -1,0 +1,13 @@
+[cdf_servers]
+%{ for index, dns in cdf-dns ~}
+${dns} ansible_host=${cdf-ip[index]} # ${cdf-id[index]}
+%{ endfor ~}
+
+[cdf_servers:vars]
+host_template=HostTemplate-CDF
+
+[cdh_servers:children]
+cdf_servers
+
+[all:vars]
+ansible_user=centos
