@@ -42,8 +42,6 @@ we need to fiddle around and get keytabs and user accounts sorted
 
 ```{bash}
 
-ansible-playbook -i inventory cloudera-playbook/testing_site.yml --private-key /path/to/my_aws_key.pem
-
 ansible-playbook -i inventory postwork/setup.yml --private-key /path/to/my_aws_key.pem
 
 

@@ -12,19 +12,4 @@
 - Need to look at roles in order to be able to manage the inventory better
 - Can use a role tag in order to sort out the logic
 
-# Placeholder for code to add node
-
-- need install java
-- install krb requirements
-- add users
-
-
-# Testing Terraform
-
-Initialise
-
-```{Bash}
-
-
-
-```
+current hack requires manually copying over details on the krb5 node as well

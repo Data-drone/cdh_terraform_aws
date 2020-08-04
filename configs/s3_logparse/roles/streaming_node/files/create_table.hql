@@ -1,6 +1,4 @@
-/* Table for storing the logs */
-/* but what should the pk be... convert to hive streaming with parquet? */
-CREATE External TABLE IF NOT EXISTS default.s3_access_logs_external(
+CREATE EXTERNAL TABLE IF NOT EXISTS default.s3_access_logs_external(
          BucketOwner STRING,
          Bucket STRING,
          RequestDateTime STRING,
@@ -27,4 +25,5 @@ CREATE External TABLE IF NOT EXISTS default.s3_access_logs_external(
          AuthType STRING,
          EndPoint STRING,
          TLSVersion STRING
-) STORED AS PARQUET; 
+) STORED AS PARQUET
+LOCATION 's3a://blaws3logsorganised/RawParquet_test2/'; 

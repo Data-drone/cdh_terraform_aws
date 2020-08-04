@@ -9,3 +9,8 @@ group by substr(requestdatetime, 1, 20);
 select substr(requestdatetime, 1, 16), useragent, count(*), avg(cast(turnaroundtime as int)) from s3_access_logs_external
 group by substr(requestdatetime, 1, 16), useragent;
 
+/* Impala Queries */
+/* Date Conversion */
+Select max(from_unixtime(unix_timestamp(requestdatetime, 'dd/MMM/yyyy:HH:mm:ss SSSS')))
+from s3_access_logs_external_test2; 
+
