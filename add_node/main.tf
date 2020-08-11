@@ -1,8 +1,8 @@
 provider "aws" {}
 
-resource "aws_instance"  "cdf"  {
+resource "aws_instance"  "data"  {
     ami = "ami-0b2045146eb00b617"
-    instance_type = "m5.2xlarge"
+    instance_type = "m5.4xlarge"
     key_name = var.ssh-key
 
     count = var.new_node_count
@@ -10,12 +10,11 @@ resource "aws_instance"  "cdf"  {
     root_block_device {
         volume_type           = var.volume_type
         volume_size           = var.volume_size
-        iops                  = var.iops
         delete_on_termination = true
     }
 
     tags = {
-        Name = join("-", [var.prefix, "cdf"])
+        Name = join("-", [var.prefix, "data"])
         owner = var.owner
         enddate = var.enddate
     }

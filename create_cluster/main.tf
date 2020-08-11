@@ -38,7 +38,6 @@ resource "aws_instance"  "manager"  {
     root_block_device {
         volume_type           = var.volume_type
         volume_size           = var.volume_size
-        iops                  = var.iops
         delete_on_termination = true
     }
 

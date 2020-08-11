@@ -39,12 +39,12 @@ variable "cdf_node_count" {
 
 variable "volume_type" {
     type = string
-    default = "io1"
+    default = "gp2"
 }
 
 variable "volume_size" {
     type = number
-    default = 50
+    default = 100
 }
 
 variable "iops" {
