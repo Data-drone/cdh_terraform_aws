@@ -32,9 +32,22 @@ terraform apply --var-file="myfile.tfvars"
 ansible-playbook -i inventory ansible-prework/main.yml --private-key /path/to/my_aws_key.pem
 
 # change cloudera-playbook location to wherever it is
-ansible-playbook -i inventory ../cloudera-playbook/site.yml --private-key /path/to/my_aws_key.pem
+## moved paywall auth here
+ansible-playbook -i inventory ../cloudera-playbook/site.yml --extra-vars="cloudera_archive_authn=<user>:<pass>" --private-key /path/to/my_aws_key.pem
 
 ```
+
+# current add node
+
+Currently in the add node subfolder
+
+separate terraform there
+
+need to manually paste over db_server / scm_server / krb5_server
+
+run prework as per normal
+
+run 
 
 # Testing postwork
 
