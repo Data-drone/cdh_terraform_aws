@@ -59,3 +59,8 @@ ansible-playbook -i inventory postwork/setup.yml --private-key /path/to/my_aws_k
 
 
 ```
+
+# adding security
+
+need to look at how we do tls and kerberise interfaces
+need to have a ca? and an ldap?
