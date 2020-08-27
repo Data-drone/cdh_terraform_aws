@@ -1,6 +1,6 @@
 [cdf_servers]
-%{ for index, dns in cdf-dns ~}
-${dns} ansible_host=${cdf-ip[index]} # ${cdf-id[index]}
+%{ for index, dns in node-dns ~}
+${dns} ansible_host=${node-ip[index]} # ${node-id[index]}
 %{ endfor ~}
 
 [cdf_servers:vars]

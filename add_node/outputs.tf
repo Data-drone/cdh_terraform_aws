@@ -1,9 +1,9 @@
 resource "local_file" "AnsibleInventory" {
  content = templatefile("inventory.tmpl",
  {
-  cdf-id = aws_instance.cdf.*.id,
-  cdf-ip = aws_instance.cdf.*.public_ip,
-  cdf-dns = aws_instance.cdf.*.private_dns,  
+  node-id = aws_instance.node.*.id,
+  node-ip = aws_instance.node.*.public_ip,
+  node-dns = aws_instance.node.*.private_dns,  
  }
  )
  filename = "inventory"

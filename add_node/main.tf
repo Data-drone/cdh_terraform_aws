@@ -1,6 +1,6 @@
 provider "aws" {}
 
-resource "aws_instance"  "data"  {
+resource "aws_instance"  "node"  {
     ami = "ami-0b2045146eb00b617"
     instance_type = "m5.4xlarge"
     key_name = var.ssh-key
@@ -14,7 +14,7 @@ resource "aws_instance"  "data"  {
     }
 
     tags = {
-        Name = join("-", [var.prefix, "data"])
+        Name = join("-", [var.prefix, "wrk"])
         owner = var.owner
         enddate = var.enddate
     }
